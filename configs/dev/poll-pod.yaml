@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: poll-pod
+  labels:
+    evn: dev
+spec:
+  containers:
+  - name: poll-container
+    image: polls:gu
+    command: ["python"]
+    args: ["manage.py", "runserver", "0.0.0.0:8000"]
+    imagePullPolicy: Never
+    ports:
+    - containerPort: 8000
