@@ -20,10 +20,10 @@ spec:
     spec:
       containers:
       - name: poll-container
-        image: polls:gu
+        image: poll:gu
         imagePullPolicy: Never
         ports:
         - containerPort: 8000
         env: 
         - name: DJANGO_ALLOWED_HOSTS
-          value: poll-svc
+          value: poll-svc, localhost
