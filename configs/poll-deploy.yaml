@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poll-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: poll-app
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: poll-app
+    spec:
+      containers:
+      - name: poll-container
+        image: polls:gu
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
+        env: 
+        - name: DJANGO_ALLOWED_HOSTS
+          value: poll-svc
