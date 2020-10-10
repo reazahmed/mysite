@@ -26,4 +26,4 @@ spec:
         - containerPort: 8000
         env: 
         - name: DJANGO_ALLOWED_HOSTS
-          value: poll-svc, localhost
+          value: poll-svc
