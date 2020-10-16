@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poll-deploy
+spec:
+  template:
+    spec:
+      containers:
+        - name: poll-container
+          env:
+            - name: DJANGO_ALLOWED_HOSTS
+              value: '*'

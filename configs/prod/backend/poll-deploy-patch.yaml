@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:  
+  name: poll-deploy
+spec:  
+  replicas: 3  
+  strategy:    
+    type: RollingUpdate
+    rollingUpdate:      
+      maxSurge: 2
+      maxUnavailable: 2
+  template:
+    spec:
+      containers:
+        - name: poll-container
+          image: gcr.io/wp-host-123/poll:prod
+          imagePullPolicy: IfNotPresent
+          
